@@ -7,7 +7,46 @@
       Add the elements and script needed so that a user can enter a number of sides and a number of times to roll; display on a button click.</h4>
     <!-- Place Answer Here -->
       
-      
+    <label for='diceSideInput'>Number of Sides:</label>
+      <input id='diceSideInput'>
+      <br>
+      <br>
+      <label for='rollAmountInput'>Roll Amount:</label>
+      <input id='rollAmountInput'>
+      <button id='rollDice' onClick='rollem(document.getElementById("diceSideInput").value, document.getElementById("rollAmountInput").value)'>Roll</button>
+
+      <p id='rollDisplay'></p>
+
+      <script>
+
+        //epic class time
+        class Dice{
+          //cornstructor
+          constructor(sidesVal){
+            this.sides = sidesVal;
+          };
+
+          //function to roll
+          roll(){
+            return Math.floor(Math.random()*Math.floor(this.sides) + 1)
+          };
+        };
+
+        function rollem(sidesVal, rollVal){
+          var die = new Dice(sidesVal);
+          var rollSum = 0;
+          var rollResult = 0;
+          var rollList = '';
+          while(rollVal > 0){
+            rollResult = die.roll();
+            rollSum += rollResult;
+            rollList += ' ' + rollResult;
+            rollVal--;
+          }
+          document.getElementById("rollDisplay").innerHTML = rollList + " Sum: " + rollSum;
+        }
+
+      </script>
 
     <!-- Place Answer Here -->
   </div>
